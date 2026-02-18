@@ -29,7 +29,7 @@ workshop-open-learn/
 ├── languages.yaml
 ├── deutsch/
 │   ├── topics.yaml
-│   └── open-learn-workshop/
+│   └── open-learn/
 │       ├── lessons.yaml
 │       ├── 01-plattform-kennenlernen/
 │       ├── 02-inhalte-verstehen/
@@ -37,7 +37,7 @@ workshop-open-learn/
 │       └── 04-veroeffentlichen-und-teilen/
 └── english/
     ├── topics.yaml
-    └── open-learn-workshop/
+    └── open-learn/
         ├── lessons.yaml
         ├── 01-getting-started/
         ├── 02-understanding-content/
