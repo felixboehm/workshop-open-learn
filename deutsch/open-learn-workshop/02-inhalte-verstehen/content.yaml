@@ -1,0 +1,122 @@
+version: 1
+number: 2
+title: "Inhalte verstehen"
+description: "Die Struktur von Lektionen, Sektionen und Beispielen"
+sections:
+  - title: "Die Drei-Ebenen-Hierarchie"
+    explanation: |
+      Open Learn organisiert Inhalte in drei Ebenen:
+
+      ```
+      Sprache → Thema → Lektion
+      ```
+
+      - **Sprache** (z.B. `deutsch`): Die Ausgangssprache für Erklärungen
+      - **Thema** (z.B. `portugiesisch`): Was gelernt wird
+      - **Lektion** (z.B. `01-grundlagen`): Eine einzelne Lerneinheit
+
+      Im Dateisystem sieht das so aus:
+      ```
+      deutsch/
+      └── portugiesisch/
+          ├── lessons.yaml
+          ├── 01-grundlagen/
+          │   └── content.yaml
+          └── 02-verben/
+              └── content.yaml
+      ```
+    examples:
+      - q: "Welche drei Ebenen hat die Inhaltsstruktur?"
+        a: "Sprache → Thema → Lektion"
+        rel:
+          - ["Sprache", "Language", "Oberste Ebene — Interface-Sprache"]
+          - ["Thema", "Topic", "Mittlere Ebene — was gelernt wird"]
+          - ["Lektion", "Lesson", "Unterste Ebene — einzelne Lerneinheit"]
+
+      - q: "Welche Datei listet alle verfügbaren Sprachen?"
+        a: "languages.yaml — liegt im Wurzelverzeichnis"
+        rel:
+          - ["languages.yaml", "Wurzeldatei mit allen Interface-Sprachen"]
+
+      - q: "Welche Datei listet die Themen für eine Sprache?"
+        a: "topics.yaml — liegt im Sprachordner (z.B. deutsch/topics.yaml)"
+        rel:
+          - ["topics.yaml", "Themenverzeichnis pro Sprache"]
+
+      - q: "Welche Datei listet die Lektionen eines Themas?"
+        a: "lessons.yaml — liegt im Themenordner"
+        rel:
+          - ["lessons.yaml", "Lektionsverzeichnis pro Thema"]
+
+  - title: "Aufbau einer Lektion"
+    explanation: |
+      Jede Lektion ist eine `content.yaml`-Datei mit folgender Struktur:
+
+      ```yaml
+      version: 1
+      number: 1
+      title: "Titel der Lektion"
+      description: "Kurze Beschreibung"
+      sections:
+        - title: "Sektionstitel"
+          explanation: |
+            Markdown-Erklärungstext
+          examples:
+            - q: "Frage"
+              a: "Antwort"
+              labels: ["Kategorie"]
+              rel:
+                - ["Begriff", "Übersetzung", "Kontext"]
+      ```
+    examples:
+      - q: "Welche Felder sind auf oberster Ebene einer Lektion Pflicht?"
+        a: "number, title und sections"
+        labels: ["Schema"]
+        rel:
+          - ["number", "Lektionsnummer — ganzzahlig, für die Sortierung"]
+          - ["title", "Lektionstitel — wird in der Übersicht angezeigt"]
+          - ["sections", "Array von Sektionen mit Beispielen"]
+
+      - q: "Welches Format wird für Erklärungstexte unterstützt?"
+        a: "Markdown — mit Fettdruck, Listen, Tabellen, Code-Blöcken"
+        labels: ["Schema"]
+        rel:
+          - ["Markdown", "Textformatierung in explanation-Feldern"]
+
+      - q: "Was ist der Unterschied zwischen q und a?"
+        a: "q ist die Frage oder der Quelltext, a ist die Antwort oder Übersetzung"
+        labels: ["Schema"]
+        rel:
+          - ["q", "Question — Frage oder Quellinhalt"]
+          - ["a", "Answer — Antwort oder Zielinhalt"]
+
+  - title: "Labels und verwandte Begriffe"
+    explanation: |
+      **Labels** kategorisieren Beispiele — z.B. nach Grammatik, Schwierigkeit oder Thema.
+      Sie werden als farbige Badges angezeigt.
+
+      **Verwandte Begriffe (rel)** sind das Herzstück des Lernfortschritts:
+      - Erstes Element = **eindeutige ID** (wird fürs Tracking verwendet)
+      - Zweites Element = Übersetzung oder Erklärung
+      - Drittes Element = optionaler Kontext
+
+      Derselbe Begriff kann in mehreren Lektionen vorkommen. Wird er einmal als
+      gelernt markiert, gilt das überall.
+    examples:
+      - q: "Wozu dienen Labels bei Beispielen?"
+        a: "Zur Kategorisierung — z.B. Grammatik-Konzepte, Schwierigkeitsgrad, Themenbereich"
+        labels: ["Labels"]
+        rel:
+          - ["Labels", "Optionale Tags zur Kategorisierung von Beispielen"]
+
+      - q: "Was passiert, wenn derselbe rel-Begriff in mehreren Lektionen vorkommt?"
+        a: "Er wird als ein einziger Lernbegriff behandelt — einmal gelernt, überall gelernt"
+        labels: ["Fortschritt"]
+        rel:
+          - ["rel-ID", "Erstes Element im rel-Array, dient als eindeutige ID"]
+
+      - q: "Wie viele Elemente hat ein rel-Eintrag mindestens?"
+        a: "Zwei: den Begriff und seine Übersetzung. Ein drittes Element für Kontext ist optional."
+        labels: ["Schema"]
+        rel:
+          - ["rel-Eintrag", "Array mit 2-3 Strings: [Begriff, Übersetzung, Kontext]"]

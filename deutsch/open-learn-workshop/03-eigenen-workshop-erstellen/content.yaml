@@ -1,0 +1,114 @@
+version: 1
+number: 3
+title: "Eigenen Workshop erstellen"
+description: "Schritt für Schritt zum eigenen Workshop-Repository"
+sections:
+  - title: "Repository anlegen"
+    explanation: |
+      Ein Workshop ist ein eigenes Git-Repository mit einer festgelegten Ordnerstruktur.
+      Die Mindeststruktur sieht so aus:
+
+      ```
+      mein-workshop/
+      ├── languages.yaml
+      ├── deutsch/
+      │   ├── topics.yaml
+      │   └── mein-thema/
+      │       ├── lessons.yaml
+      │       └── 01-erste-lektion/
+      │           └── content.yaml
+      ```
+    examples:
+      - q: "Welche Datei muss im Wurzelverzeichnis des Workshops liegen?"
+        a: "languages.yaml — sie deklariert die verfügbaren Interface-Sprachen"
+        labels: ["Struktur"]
+        rel:
+          - ["languages.yaml", "Wurzeldatei — listet Sprachen mit folder und code"]
+
+      - q: "Wie sieht ein minimaler languages.yaml-Eintrag aus?"
+        a: "languages:\\n  - folder: deutsch\\n    code: de-DE"
+        labels: ["Struktur"]
+        rel:
+          - ["folder", "Name des Sprachordners im Repository"]
+          - ["code", "BCP 47 Sprachcode für Text-to-Speech (z.B. de-DE)"]
+
+      - q: "Was ist ein BCP 47 Sprachcode?"
+        a: "Ein standardisiertes Format für Sprachkennungen, z.B. de-DE, en-US, pt-PT"
+        labels: ["Referenz"]
+        rel:
+          - ["BCP 47", "Standard für Sprachcodes — Sprache-Region"]
+          - ["de-DE", "Deutsch (Deutschland)"]
+          - ["en-US", "Englisch (USA)"]
+          - ["pt-PT", "Portugiesisch (Portugal)"]
+
+  - title: "Lektionen schreiben"
+    explanation: |
+      Jede Lektion liegt in einem eigenen Ordner und enthält eine `content.yaml`-Datei.
+
+      **Tipps für gute Lektionen:**
+      - 4-6 Sektionen pro Lektion
+      - 3-5 Beispiele pro Sektion
+      - Jedes Beispiel sollte mindestens ein rel-Item haben
+      - Erklärungen in Markdown mit Struktur (Listen, Fettdruck)
+      - Progressive Schwierigkeit — einfach anfangen
+    examples:
+      - q: "Wie viele Sektionen sollte eine Lektion haben?"
+        a: "4-6 Sektionen — genug für Tiefe, aber nicht überwältigend"
+        labels: ["Best Practice"]
+        rel:
+          - ["Sektion", "Thematischer Block innerhalb einer Lektion"]
+
+      - q: "Wie viele Beispiele pro Sektion sind ideal?"
+        a: "3-5 Beispiele — genug zum Üben, ohne zu ermüden"
+        labels: ["Best Practice"]
+        rel:
+          - ["Beispiel", "Ein q/a-Paar mit optionalen Labels und rel-Einträgen"]
+
+      - q: "Wie benennt man Lektionsordner?"
+        a: "Mit Nummernpräfix und Beschreibung: 01-grundlagen, 02-verben, 03-fortgeschritten"
+        labels: ["Konvention"]
+        rel:
+          - ["Nummernpräfix", "Zweistellig mit führender Null: 01-, 02-, ... 10-"]
+
+      - q: "Was passiert mit dem description-Feld einer Lektion?"
+        a: "Es wird auf der Lektionsübersicht als Beschreibungstext unter dem Titel angezeigt"
+        labels: ["Schema"]
+        rel:
+          - ["description", "Optionaler Beschreibungstext der Lektion"]
+
+  - title: "Mehrsprachige Workshops"
+    explanation: |
+      Ein Workshop kann Inhalte in **mehreren Sprachen** anbieten. Dazu legt man
+      einfach mehrere Sprachordner an:
+
+      ```
+      mein-workshop/
+      ├── languages.yaml      # listet deutsch UND english
+      ├── deutsch/
+      │   ├── topics.yaml
+      │   └── mein-thema/
+      └── english/
+          ├── topics.yaml
+          └── my-topic/
+      ```
+
+      Die Themen-Ordnernamen können unterschiedlich sein (z.B. `mein-thema` vs `my-topic`),
+      solange die topics.yaml sie korrekt referenziert.
+    examples:
+      - q: "Wie bietet man denselben Workshop in mehreren Sprachen an?"
+        a: "Einen Sprachordner pro Sprache anlegen und in languages.yaml listen"
+        labels: ["Mehrsprachig"]
+        rel:
+          - ["Sprachordner", "z.B. deutsch/, english/ — enthält topics.yaml"]
+
+      - q: "Müssen die Themen-Ordnernamen in verschiedenen Sprachen gleich sein?"
+        a: "Nein — deutsch/erste-hilfe und english/first-aid sind völlig in Ordnung"
+        labels: ["Mehrsprachig"]
+        rel:
+          - ["Themen-Ordner", "Name ist frei wählbar, muss in topics.yaml referenziert werden"]
+
+      - q: "Welchen code benutzt man bei einem nicht-sprachlichen Thema?"
+        a: "Denselben Code wie die Interface-Sprache, z.B. de-DE für ein deutsches Sachthema"
+        labels: ["Referenz"]
+        rel:
+          - ["Topic-Code", "Bei Sachthemen = Interface-Sprachcode"]

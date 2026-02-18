@@ -1,0 +1,122 @@
+version: 1
+number: 2
+title: "Understanding Content Structure"
+description: "The structure of lessons, sections, and examples"
+sections:
+  - title: "The Three-Level Hierarchy"
+    explanation: |
+      Open Learn organizes content in three levels:
+
+      ```
+      Language → Topic → Lesson
+      ```
+
+      - **Language** (e.g. `english`): The interface language for explanations
+      - **Topic** (e.g. `portuguese`): What is being learned
+      - **Lesson** (e.g. `01-basics`): A single learning unit
+
+      In the file system:
+      ```
+      english/
+      └── portuguese/
+          ├── lessons.yaml
+          ├── 01-basics/
+          │   └── content.yaml
+          └── 02-verbs/
+              └── content.yaml
+      ```
+    examples:
+      - q: "What are the three levels of content organization?"
+        a: "Language → Topic → Lesson"
+        rel:
+          - ["Language", "Top level — the interface language"]
+          - ["Topic", "Middle level — the subject being taught"]
+          - ["Lesson", "Bottom level — a single learning unit"]
+
+      - q: "Which file lists all available languages?"
+        a: "languages.yaml — located in the root directory"
+        rel:
+          - ["languages.yaml", "Root file listing all interface languages"]
+
+      - q: "Which file lists the topics for a language?"
+        a: "topics.yaml — located in the language folder (e.g. english/topics.yaml)"
+        rel:
+          - ["topics.yaml", "Topic directory per language"]
+
+      - q: "Which file lists the lessons of a topic?"
+        a: "lessons.yaml — located in the topic folder"
+        rel:
+          - ["lessons.yaml", "Lesson directory per topic"]
+
+  - title: "Lesson Structure"
+    explanation: |
+      Each lesson is a `content.yaml` file with this structure:
+
+      ```yaml
+      version: 1
+      number: 1
+      title: "Lesson Title"
+      description: "Brief description"
+      sections:
+        - title: "Section Title"
+          explanation: |
+            Markdown explanation text
+          examples:
+            - q: "Question"
+              a: "Answer"
+              labels: ["Category"]
+              rel:
+                - ["term", "translation", "context"]
+      ```
+    examples:
+      - q: "Which top-level fields are required in a lesson?"
+        a: "number, title, and sections"
+        labels: ["Schema"]
+        rel:
+          - ["number", "Lesson number — integer, used for sorting"]
+          - ["title", "Lesson title — displayed in the overview"]
+          - ["sections", "Array of sections with examples"]
+
+      - q: "What format is supported for explanation texts?"
+        a: "Markdown — with bold, lists, tables, and code blocks"
+        labels: ["Schema"]
+        rel:
+          - ["Markdown", "Text formatting in explanation fields"]
+
+      - q: "What is the difference between q and a?"
+        a: "q is the question or source text, a is the answer or translation"
+        labels: ["Schema"]
+        rel:
+          - ["q", "Question — prompt or source content"]
+          - ["a", "Answer — response or target content"]
+
+  - title: "Labels and Related Items"
+    explanation: |
+      **Labels** categorize examples — by grammar, difficulty, or topic.
+      They are shown as colored badges.
+
+      **Related items (rel)** are the core of progress tracking:
+      - First element = **unique ID** (used for tracking)
+      - Second element = translation or explanation
+      - Third element = optional context
+
+      The same item can appear in multiple lessons. Once marked as learned,
+      it counts as learned everywhere.
+    examples:
+      - q: "What are labels used for?"
+        a: "To categorize examples — e.g. grammar concepts, difficulty level, subject area"
+        labels: ["Labels"]
+        rel:
+          - ["Labels", "Optional tags for categorizing examples"]
+
+      - q: "What happens when the same rel item appears in multiple lessons?"
+        a: "It is treated as one learning item — learned once, learned everywhere"
+        labels: ["Progress"]
+        rel:
+          - ["rel ID", "First element in rel array, serves as unique identifier"]
+
+      - q: "How many elements does a rel entry have at minimum?"
+        a: "Two: the term and its translation. A third element for context is optional."
+        labels: ["Schema"]
+        rel:
+          - ["rel entry", "Array of 2-3 strings: [term, translation, context]"]

@@ -1,0 +1,108 @@
+version: 1
+number: 3
+title: "Creating Your Own Workshop"
+description: "Step by step guide to building a workshop repository"
+sections:
+  - title: "Setting Up the Repository"
+    explanation: |
+      A workshop is a standalone Git repository with a specific folder structure.
+      The minimum structure:
+
+      ```
+      my-workshop/
+      ├── languages.yaml
+      ├── english/
+      │   ├── topics.yaml
+      │   └── my-topic/
+      │       ├── lessons.yaml
+      │       └── 01-first-lesson/
+      │           └── content.yaml
+      ```
+    examples:
+      - q: "What file must exist in the root of a workshop repository?"
+        a: "languages.yaml — it declares the available interface languages"
+        labels: ["Structure"]
+        rel:
+          - ["languages.yaml", "Root file — lists languages with folder and code"]
+
+      - q: "What does a minimal languages.yaml entry look like?"
+        a: "languages:\\n  - folder: english\\n    code: en-US"
+        labels: ["Structure"]
+        rel:
+          - ["folder", "Name of the language directory in the repository"]
+          - ["code", "BCP 47 language code for text-to-speech (e.g. en-US)"]
+
+      - q: "What is a BCP 47 language code?"
+        a: "A standardized format for language identifiers, e.g. en-US, de-DE, pt-PT"
+        labels: ["Reference"]
+        rel:
+          - ["BCP 47", "Standard for language codes — language-region"]
+          - ["en-US", "English (United States)"]
+          - ["de-DE", "German (Germany)"]
+          - ["pt-PT", "Portuguese (Portugal)"]
+
+  - title: "Writing Lessons"
+    explanation: |
+      Each lesson lives in its own folder with a `content.yaml` file.
+
+      **Tips for good lessons:**
+      - 4-6 sections per lesson
+      - 3-5 examples per section
+      - Each example should have at least one rel item
+      - Use Markdown in explanations (lists, bold, code)
+      - Progressive difficulty — start simple
+    examples:
+      - q: "How many sections should a lesson have?"
+        a: "4-6 sections — enough depth without being overwhelming"
+        labels: ["Best Practice"]
+        rel:
+          - ["Section", "Thematic block within a lesson"]
+
+      - q: "How many examples per section are ideal?"
+        a: "3-5 examples — enough to practice without fatigue"
+        labels: ["Best Practice"]
+        rel:
+          - ["Example", "A q/a pair with optional labels and rel entries"]
+
+      - q: "How should lesson folders be named?"
+        a: "With a number prefix and description: 01-basics, 02-verbs, 03-advanced"
+        labels: ["Convention"]
+        rel:
+          - ["Number prefix", "Two digits with leading zero: 01-, 02-, ... 10-"]
+
+  - title: "Multilingual Workshops"
+    explanation: |
+      A workshop can offer content in **multiple languages** by creating
+      multiple language folders:
+
+      ```
+      my-workshop/
+      ├── languages.yaml      # lists english AND deutsch
+      ├── english/
+      │   ├── topics.yaml
+      │   └── my-topic/
+      └── deutsch/
+          ├── topics.yaml
+          └── mein-thema/
+      ```
+
+      Topic folder names can differ between languages (e.g. `my-topic` vs `mein-thema`),
+      as long as topics.yaml references them correctly.
+    examples:
+      - q: "How do you offer the same workshop in multiple languages?"
+        a: "Create one language folder per language and list them in languages.yaml"
+        labels: ["Multilingual"]
+        rel:
+          - ["Language folder", "e.g. english/, deutsch/ — contains topics.yaml"]
+
+      - q: "Do topic folder names need to match across languages?"
+        a: "No — english/first-aid and deutsch/erste-hilfe is perfectly fine"
+        labels: ["Multilingual"]
+        rel:
+          - ["Topic folder", "Name is freely chosen, must be referenced in topics.yaml"]
+
+      - q: "What code should a non-language topic use?"
+        a: "The same code as the interface language, e.g. en-US for an English subject topic"
+        labels: ["Reference"]
+        rel:
+          - ["Topic code", "For non-language topics: same as interface language code"]

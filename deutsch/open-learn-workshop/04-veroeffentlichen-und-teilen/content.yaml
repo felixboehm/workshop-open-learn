@@ -1,0 +1,118 @@
+version: 1
+number: 4
+title: "Veröffentlichen und Teilen"
+description: "Workshop auf GitHub Pages deployen und per Link teilen"
+sections:
+  - title: "GitHub Repository erstellen"
+    explanation: |
+      Der Workshop wird als öffentliches GitHub-Repository angelegt.
+      Die Befehle dazu:
+
+      ```bash
+      cd mein-workshop/
+      git init
+      git add -A
+      git commit -m "Initial workshop content"
+      gh repo create USERNAME/mein-workshop --public --source . --push
+      ```
+    examples:
+      - q: "Muss das Repository öffentlich sein?"
+        a: "Ja — GitHub Pages für private Repos erfordert einen kostenpflichtigen Plan"
+        labels: ["GitHub"]
+        rel:
+          - ["Public Repository", "Öffentliches Repo — kostenlose GitHub Pages"]
+
+      - q: "Welches Tool erstellt ein GitHub-Repo von der Kommandozeile?"
+        a: "gh — die GitHub CLI (gh repo create)"
+        labels: ["GitHub"]
+        rel:
+          - ["gh", "GitHub CLI — Kommandozeilen-Tool für GitHub"]
+
+  - title: "GitHub Pages aktivieren"
+    explanation: |
+      GitHub Pages macht das Repository als statische Website verfügbar.
+      Man braucht eine GitHub Actions Workflow-Datei:
+
+      **`.github/workflows/static.yml`:**
+      ```yaml
+      name: Deploy to Pages
+      on:
+        push:
+          branches: ["main"]
+      permissions:
+        contents: read
+        pages: write
+        id-token: write
+      jobs:
+        deploy:
+          environment:
+            name: github-pages
+          runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@v4
+            - uses: actions/configure-pages@v5
+            - uses: actions/upload-pages-artifact@v3
+              with:
+                path: '.'
+            - uses: actions/deploy-pages@v4
+      ```
+
+      Danach muss Pages im Repository aktiviert werden (Settings → Pages → Source: GitHub Actions).
+    examples:
+      - q: "Was ist GitHub Actions?"
+        a: "Ein CI/CD-System von GitHub, das Workflows automatisch ausführt"
+        labels: ["GitHub"]
+        rel:
+          - ["GitHub Actions", "Automatisierung für Build, Test und Deployment"]
+
+      - q: "Was passiert nach einem Push auf main?"
+        a: "Der Workflow deployt automatisch alle Dateien auf GitHub Pages"
+        labels: ["Deployment"]
+        rel:
+          - ["Automatisches Deployment", "Bei jedem Push auf main wird neu deployt"]
+
+      - q: "Wie lautet die URL des deployten Workshops?"
+        a: "https://USERNAME.github.io/REPO-NAME/"
+        labels: ["Deployment"]
+        rel:
+          - ["GitHub Pages URL", "https://USERNAME.github.io/REPO-NAME/"]
+
+  - title: "Share-Link erstellen"
+    explanation: |
+      Der Share-Link verbindet deinen Workshop mit Open Learn. Das Format:
+
+      ```
+      https://felixboehm.github.io/open-learn/#/add?source=DEINE-WORKSHOP-URL
+      ```
+
+      Wenn ein Nutzer diesen Link klickt:
+      1. Open Learn öffnet sich
+      2. Eine Bestätigungsseite zeigt, was im Workshop enthalten ist
+      3. Der Nutzer klickt "Hinzufügen"
+      4. Die Inhalte erscheinen auf der Startseite neben den lokalen Themen
+      5. Der Workshop bleibt im Browser gespeichert (localStorage)
+    examples:
+      - q: "Wie ist der Share-Link aufgebaut?"
+        a: "Open-Learn-URL + #/add?source= + Workshop-URL"
+        labels: ["Teilen"]
+        rel:
+          - ["Share-Link", "URL zum Hinzufügen eines Workshops zu Open Learn"]
+          - ["?source=", "Query-Parameter mit der Workshop-URL"]
+
+      - q: "Wo wird der hinzugefügte Workshop gespeichert?"
+        a: "Im localStorage des Browsers unter dem Key 'contentSources'"
+        labels: ["Teilen"]
+        rel:
+          - ["contentSources", "localStorage-Key für externe Workshop-URLs"]
+
+      - q: "Kann ein Nutzer einen hinzugefügten Workshop wieder entfernen?"
+        a: "Ja — über den ✕-Button neben dem Thema auf der Startseite"
+        labels: ["Teilen"]
+        rel:
+          - ["Remove-Button", "✕-Button zum Entfernen externer Inhalte"]
+
+      - q: "Was passiert, wenn der Workshop-Server nicht erreichbar ist?"
+        a: "Die Lektionen können nicht geladen werden, aber andere lokale Inhalte funktionieren weiterhin"
+        labels: ["Teilen"]
+        rel:
+          - ["Offline-Verhalten", "Externe Quellen benötigen Internetverbindung"]

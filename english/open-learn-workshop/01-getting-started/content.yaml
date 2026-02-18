@@ -1,0 +1,85 @@
+version: 1
+number: 1
+title: "Getting Started with Open Learn"
+description: "What is Open Learn and how does the interface work?"
+sections:
+  - title: "What is Open Learn?"
+    explanation: |
+      **Open Learn** is an open, static learning platform. It runs entirely in the browser
+      and requires no server. Content is provided as YAML files and can be loaded from
+      any source — local or from external repositories.
+
+      **Core principles:**
+      - **Open**: Anyone can create and share content
+      - **Static**: No backend required, runs on GitHub Pages
+      - **Flexible**: Not just languages — any topic works
+    examples:
+      - q: "What file format does Open Learn use for content?"
+        a: "YAML — a human-readable text format"
+        rel:
+          - ["YAML", "Yet Another Markup Language", "File format for learning content"]
+
+      - q: "Where can learning content be hosted?"
+        a: "On GitHub Pages or any static web server"
+        rel:
+          - ["GitHub Pages", "Free static hosting service by GitHub"]
+
+      - q: "Does Open Learn need a server or database?"
+        a: "No, everything runs in the browser. Progress is saved in localStorage."
+        rel:
+          - ["localStorage", "Browser storage for settings and progress"]
+
+  - title: "The Home Page"
+    explanation: |
+      On the home page, you select two things:
+      1. **Interface language**: What language do you want to learn in? (e.g. English)
+      2. **Topic**: What do you want to learn? (e.g. Portuguese, First Aid, Math)
+
+      After selecting both, click **Load Lessons** to see all available lessons.
+    examples:
+      - q: "What do you select first on the home page?"
+        a: "The interface language — the language used for explanations"
+        labels: ["Navigation"]
+        rel:
+          - ["Interface language", "The language explanations are written in"]
+
+      - q: "What is a 'Teaching Topic'?"
+        a: "The subject you want to learn — a language or any other topic"
+        labels: ["Navigation"]
+        rel:
+          - ["Topic", "Subject to learn", "Can be a language or any subject"]
+
+      - q: "How do you add external workshops?"
+        a: "Via a share link starting with #/add?source="
+        labels: ["Content Sources"]
+        rel:
+          - ["Share link", "URL to add external content to Open Learn"]
+
+  - title: "Lessons and Progress"
+    explanation: |
+      Each lesson consists of **sections** with **examples**. Examples have a
+      question (q) and an answer (a), plus optional labels and related learning items.
+
+      **Progress** is tracked via the related items (rel):
+      - Click on an item to mark it as "learned"
+      - Learned items are shown in green with a checkmark
+      - Progress is saved in the browser
+    examples:
+      - q: "What are the parts of an example in a lesson?"
+        a: "A question (q), an answer (a), optional labels, and related items (rel)"
+        rel:
+          - ["q", "Question — the source text or prompt"]
+          - ["a", "Answer — the target text or translation"]
+          - ["rel", "Related items — trackable learning terms"]
+
+      - q: "How do you mark an item as learned?"
+        a: "By clicking on the item in the lesson view"
+        labels: ["Progress"]
+        rel:
+          - ["Learning item", "A trackable term from the rel field"]
+
+      - q: "Where is learning progress saved?"
+        a: "In the browser's localStorage — persists even after closing the browser"
+        labels: ["Progress"]
+        rel:
+          - ["Progress", "Saved as JSON in browser localStorage"]

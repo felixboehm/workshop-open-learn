@@ -1,0 +1,90 @@
+version: 1
+number: 4
+title: "Publishing and Sharing"
+description: "Deploy your workshop to GitHub Pages and share it via link"
+sections:
+  - title: "Creating a GitHub Repository"
+    explanation: |
+      The workshop is created as a public GitHub repository.
+      The commands:
+
+      ```bash
+      cd my-workshop/
+      git init
+      git add -A
+      git commit -m "Initial workshop content"
+      gh repo create USERNAME/my-workshop --public --source . --push
+      ```
+    examples:
+      - q: "Does the repository need to be public?"
+        a: "Yes — GitHub Pages for private repos requires a paid plan"
+        labels: ["GitHub"]
+        rel:
+          - ["Public repository", "Public repo — free GitHub Pages hosting"]
+
+      - q: "What tool creates a GitHub repo from the command line?"
+        a: "gh — the GitHub CLI (gh repo create)"
+        labels: ["GitHub"]
+        rel:
+          - ["gh", "GitHub CLI — command-line tool for GitHub"]
+
+  - title: "Enabling GitHub Pages"
+    explanation: |
+      GitHub Pages serves your repository as a static website.
+      You need a GitHub Actions workflow file:
+
+      **`.github/workflows/static.yml`** automates deployment on every push to main.
+
+      Then enable Pages in the repository settings (Settings → Pages → Source: GitHub Actions).
+    examples:
+      - q: "What is GitHub Actions?"
+        a: "A CI/CD system by GitHub that automatically runs workflows"
+        labels: ["GitHub"]
+        rel:
+          - ["GitHub Actions", "Automation for build, test, and deployment"]
+
+      - q: "What happens after a push to main?"
+        a: "The workflow automatically deploys all files to GitHub Pages"
+        labels: ["Deployment"]
+        rel:
+          - ["Automatic deployment", "Every push to main triggers a new deployment"]
+
+      - q: "What is the URL of the deployed workshop?"
+        a: "https://USERNAME.github.io/REPO-NAME/"
+        labels: ["Deployment"]
+        rel:
+          - ["GitHub Pages URL", "https://USERNAME.github.io/REPO-NAME/"]
+
+  - title: "Creating the Share Link"
+    explanation: |
+      The share link connects your workshop with Open Learn. The format:
+
+      ```
+      https://felixboehm.github.io/open-learn/#/add?source=YOUR-WORKSHOP-URL
+      ```
+
+      When a user clicks this link:
+      1. Open Learn opens
+      2. A confirmation page shows what the workshop contains
+      3. The user clicks "Add"
+      4. The content appears on the home page alongside built-in topics
+      5. The workshop is saved in the browser (localStorage)
+    examples:
+      - q: "How is the share link structured?"
+        a: "Open Learn URL + #/add?source= + workshop URL"
+        labels: ["Sharing"]
+        rel:
+          - ["Share link", "URL to add a workshop to Open Learn"]
+          - ["?source=", "Query parameter with the workshop URL"]
+
+      - q: "Where is the added workshop saved?"
+        a: "In the browser's localStorage under the key 'contentSources'"
+        labels: ["Sharing"]
+        rel:
+          - ["contentSources", "localStorage key for external workshop URLs"]
+
+      - q: "Can a user remove an added workshop?"
+        a: "Yes — via the ✕ button next to the topic on the home page"
+        labels: ["Sharing"]
+        rel:
+          - ["Remove button", "✕ button to remove external content"]

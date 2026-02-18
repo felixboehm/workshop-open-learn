@@ -1,0 +1,85 @@
+version: 1
+number: 1
+title: "Die Plattform kennenlernen"
+description: "Was ist Open Learn und wie funktioniert die Oberfläche?"
+sections:
+  - title: "Was ist Open Learn?"
+    explanation: |
+      **Open Learn** ist eine offene, statische Lernplattform. Sie läuft komplett im Browser
+      und benötigt keinen Server. Inhalte werden als YAML-Dateien bereitgestellt und können
+      von beliebigen Quellen geladen werden — lokal oder von externen Repositories.
+
+      **Kernprinzipien:**
+      - **Offen**: Jeder kann Inhalte erstellen und teilen
+      - **Statisch**: Kein Backend nötig, läuft auf GitHub Pages
+      - **Flexibel**: Nicht nur Sprachen — jedes Thema ist möglich
+    examples:
+      - q: "Was ist das Dateiformat für Lerninhalte bei Open Learn?"
+        a: "YAML — ein menschenlesbares Textformat"
+        rel:
+          - ["YAML", "Yet Another Markup Language", "Dateiformat für Lerninhalte"]
+
+      - q: "Wo werden Lerninhalte gehostet?"
+        a: "Auf GitHub Pages oder jedem beliebigen Webserver"
+        rel:
+          - ["GitHub Pages", "Kostenloser statischer Hosting-Dienst von GitHub"]
+
+      - q: "Braucht Open Learn einen Server oder eine Datenbank?"
+        a: "Nein, alles läuft im Browser. Fortschritt wird im localStorage gespeichert."
+        rel:
+          - ["localStorage", "Browser-Speicher für Einstellungen und Fortschritt"]
+
+  - title: "Die Startseite"
+    explanation: |
+      Auf der Startseite wählt man zwei Dinge:
+      1. **Ausgangssprache**: In welcher Sprache möchte ich lernen? (z.B. Deutsch)
+      2. **Thema**: Was möchte ich lernen? (z.B. Portugiesisch, Erste Hilfe, Mathematik)
+
+      Nach der Auswahl klickt man auf **Load Lessons** und sieht alle verfügbaren Lektionen.
+    examples:
+      - q: "Was wählt man zuerst auf der Startseite?"
+        a: "Die Ausgangssprache — die Sprache, in der man lernen möchte"
+        labels: ["Navigation"]
+        rel:
+          - ["Ausgangssprache", "Interface Language", "Sprache der Erklärungen"]
+
+      - q: "Was bedeutet 'Teaching Topic' auf der Startseite?"
+        a: "Das Thema, das man lernen möchte — z.B. eine Sprache oder ein Sachthema"
+        labels: ["Navigation"]
+        rel:
+          - ["Topic", "Lernthema", "Kann eine Sprache oder ein beliebiges Thema sein"]
+
+      - q: "Wie fügt man externe Workshops hinzu?"
+        a: "Über einen Share-Link, der mit #/add?source= beginnt"
+        labels: ["Content Sources"]
+        rel:
+          - ["Share-Link", "URL zum Hinzufügen externer Inhalte"]
+
+  - title: "Lektionen und Fortschritt"
+    explanation: |
+      Jede Lektion besteht aus **Sektionen** mit **Beispielen**. Beispiele haben eine
+      Frage (q) und eine Antwort (a), dazu optionale Labels und verwandte Lernbegriffe.
+
+      **Fortschritt** wird über die verwandten Begriffe (rel) getrackt:
+      - Klicke auf einen Begriff, um ihn als "gelernt" zu markieren
+      - Gelernte Begriffe werden grün angezeigt mit Häkchen
+      - Der Fortschritt wird im Browser gespeichert
+    examples:
+      - q: "Woraus besteht ein Beispiel in einer Lektion?"
+        a: "Aus einer Frage (q), einer Antwort (a), optionalen Labels und verwandten Begriffen (rel)"
+        rel:
+          - ["q", "Question — die Frage oder der Quelltext"]
+          - ["a", "Answer — die Antwort oder Übersetzung"]
+          - ["rel", "Related Items — verwandte Lernbegriffe"]
+
+      - q: "Wie markiert man einen Begriff als gelernt?"
+        a: "Durch Klicken auf den Begriff in der Lektion"
+        labels: ["Fortschritt"]
+        rel:
+          - ["Lernbegriff", "Ein trackbarer Begriff aus dem rel-Feld"]
+
+      - q: "Wo wird der Lernfortschritt gespeichert?"
+        a: "Im localStorage des Browsers — bleibt auch nach dem Schließen erhalten"
+        labels: ["Fortschritt"]
+        rel:
+          - ["Fortschritt", "Progress", "Gespeichert als JSON im Browser"]
