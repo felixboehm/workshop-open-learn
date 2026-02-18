@@ -106,3 +106,43 @@ sections:
         labels: ["Reference"]
         rel:
           - ["Topic code", "For non-language topics: same as interface language code"]
+
+  - title: "Generating Audio Files"
+    explanation: |
+      Open Learn supports **pre-recorded MP3 audio files** for each lesson.
+      The Open Learn repository includes a `generate-audio.sh` script that uses
+      macOS Text-to-Speech (`say`) and `ffmpeg` to automatically generate audio.
+
+      **Requirements:** macOS, `yq` (`brew install yq`), `ffmpeg` (`brew install ffmpeg`)
+
+      **Naming convention:**
+      - `title.mp3` — Lesson title (interface language)
+      - `0-title.mp3` — Section title (topic language)
+      - `0-0-q.mp3` — Question (topic language)
+      - `0-0-a.mp3` — Answer (interface language)
+    examples:
+      - q: "How do you generate audio for a single lesson?"
+        a: "./generate-audio.sh /path/to/workshop/english/topic/01-lesson/"
+        labels: ["Command"]
+        rel:
+          - ["generate-audio.sh", "Script from the Open Learn repository"]
+
+      - q: "How do you generate audio for all lessons in a workshop?"
+        a: "Loop over all lesson folders: for lesson in english/topic/*/; do ./generate-audio.sh $lesson; done"
+        labels: ["Command"]
+        rel:
+          - ["Loop", "The script processes one lesson per invocation"]
+
+      - q: "What happens if audio files already exist?"
+        a: "The script skips existing files — it is idempotent. Use -f to force regeneration."
+        labels: ["Idempotent"]
+        rel:
+          - ["-f", "Force flag — regenerates all files even if they exist"]
+
+      - q: "Which voices are used?"
+        a: "The voice is determined by the BCP 47 code: Anna (de-DE), Samantha (en-US), Joana (pt-PT)"
+        labels: ["Reference"]
+        rel:
+          - ["Anna", "German macOS TTS voice"]
+          - ["Samantha", "English macOS TTS voice"]
+          - ["Joana", "Portuguese macOS TTS voice"]
