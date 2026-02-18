@@ -10,7 +10,7 @@ sections:
 
       ```
       mein-workshop/
-      ├── languages.yaml
+      ├── index.yaml
       ├── deutsch/
       │   ├── topics.yaml
       │   └── mein-thema/
@@ -20,12 +20,12 @@ sections:
       ```
     examples:
       - q: "Welche Datei muss im Wurzelverzeichnis des Workshops liegen?"
-        a: "languages.yaml — sie deklariert die verfügbaren Interface-Sprachen"
+        a: "index.yaml — sie deklariert die verfügbaren Interface-Sprachen"
         labels: ["Struktur"]
         rel:
-          - ["languages.yaml", "Wurzeldatei — listet Sprachen mit folder und code"]
+          - ["index.yaml", "Wurzeldatei — listet Sprachen mit folder und code"]
 
-      - q: "Wie sieht ein minimaler languages.yaml-Eintrag aus?"
+      - q: "Wie sieht ein minimaler index.yaml-Eintrag aus?"
         a: "languages:\\n  - folder: deutsch\\n    code: de-DE"
         labels: ["Struktur"]
         rel:
@@ -83,7 +83,7 @@ sections:
 
       ```
       mein-workshop/
-      ├── languages.yaml      # listet deutsch UND english
+      ├── index.yaml          # listet deutsch UND english
       ├── deutsch/
       │   ├── topics.yaml
       │   └── mein-thema/
@@ -96,7 +96,7 @@ sections:
       solange die topics.yaml sie korrekt referenziert.
     examples:
       - q: "Wie bietet man denselben Workshop in mehreren Sprachen an?"
-        a: "Einen Sprachordner pro Sprache anlegen und in languages.yaml listen"
+        a: "Einen Sprachordner pro Sprache anlegen und in index.yaml listen"
         labels: ["Mehrsprachig"]
         rel:
           - ["Sprachordner", "z.B. deutsch/, english/ — enthält topics.yaml"]
