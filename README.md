@@ -1,32 +1,28 @@
-# Workshop: Open Learn kennenlernen / Getting to Know Open Learn
+# Workshop: Getting to Know Open Learn
 
-Ein interaktiver Workshop, der erklärt wie die Open-Learn-Plattform funktioniert und wie man eigene Workshops erstellt.
+An interactive workshop that explains how the Open Learn platform works and how to create your own workshops. Available in German and English.
 
-An interactive workshop that explains how the Open Learn platform works and how to create your own workshops.
+## Start Workshop
 
-## Workshop starten / Start Workshop
+Click the link below to add this workshop to Open Learn:
 
-Klicke den folgenden Link, um diesen Workshop zu Open Learn hinzuzufügen:
+**[Add Workshop to Open Learn](https://felixboehm.github.io/open-learn/#/add?source=https://felixboehm.github.io/workshop-open-learn)**
 
-Click the following link to add this workshop to Open Learn:
+## Content
 
-**[Workshop zu Open Learn hinzufügen / Add Workshop to Open Learn](https://felixboehm.github.io/open-learn/#/add?source=https://felixboehm.github.io/workshop-open-learn)**
-
-## Inhalt / Content
-
-### Deutsch (4 Lektionen)
-1. **Die Plattform kennenlernen** — Was ist Open Learn und wie funktioniert die Oberfläche?
-2. **Inhalte verstehen** — Die Struktur von Lektionen, Sektionen und Beispielen
-3. **Eigenen Workshop erstellen** — Schritt für Schritt zum eigenen Workshop-Repository
-4. **Veröffentlichen und Teilen** — Workshop auf GitHub Pages deployen und per Link teilen
+### German (4 Lessons)
+1. **Die Plattform kennenlernen** — What is Open Learn and how does the interface work?
+2. **Inhalte verstehen** — The structure of lessons, sections, and examples
+3. **Eigenen Workshop erstellen** — Step by step guide to building a workshop repository
+4. **Veröffentlichen und Teilen** — Deploy to GitHub Pages and share via link
 
 ### English (4 Lessons)
 1. **Getting Started with Open Learn** — What is Open Learn and how does the interface work?
 2. **Understanding Content Structure** — The structure of lessons, sections, and examples
 3. **Creating Your Own Workshop** — Step by step guide to building a workshop repository
-4. **Publishing and Sharing** — Deploy your workshop to GitHub Pages and share it via link
+4. **Publishing and Sharing** — Deploy to GitHub Pages and share via link
 
-## Struktur / Structure
+## Structure
 
 ```
 workshop-open-learn/
