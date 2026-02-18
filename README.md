@@ -6,7 +6,7 @@ An interactive workshop that explains how the Open Learn platform works and how 
 
 Click the link below to add this workshop to Open Learn:
 
-**[Add Workshop to Open Learn](https://felixboehm.github.io/open-learn/#/add?source=https://felixboehm.github.io/workshop-open-learn)**
+**[Add Workshop to Open Learn](https://felixboehm.github.io/open-learn/#/add?source=https://felixboehm.github.io/workshop-open-learn/workshop.yaml)**
 
 ## Content
 
@@ -26,7 +26,7 @@ Click the link below to add this workshop to Open Learn:
 
 ```
 workshop-open-learn/
-├── languages.yaml
+├── workshop.yaml
 ├── deutsch/
 │   ├── topics.yaml
 │   └── open-learn/
