@@ -112,3 +112,43 @@ sections:
         labels: ["Referenz"]
         rel:
           - ["Topic-Code", "Bei Sachthemen = Interface-Sprachcode"]
+
+  - title: "Audio-Dateien generieren"
+    explanation: |
+      Open Learn unterstützt **voraufgenommene MP3-Audiodateien** für jede Lektion.
+      Das Open-Learn-Repository enthält ein Skript `generate-audio.sh`, das mit
+      macOS Text-to-Speech (`say`) und `ffmpeg` die Audiodateien automatisch erzeugt.
+
+      **Voraussetzungen:** macOS, `yq` (`brew install yq`), `ffmpeg` (`brew install ffmpeg`)
+
+      **Namenskonvention:**
+      - `title.mp3` — Lektionstitel (Interface-Sprache)
+      - `0-title.mp3` — Sektionstitel (Themensprache)
+      - `0-0-q.mp3` — Frage (Themensprache)
+      - `0-0-a.mp3` — Antwort (Interface-Sprache)
+    examples:
+      - q: "Wie generiert man Audio für eine einzelne Lektion?"
+        a: "./generate-audio.sh /pfad/zum/workshop/deutsch/thema/01-lektion/"
+        labels: ["Kommando"]
+        rel:
+          - ["generate-audio.sh", "Skript aus dem Open-Learn-Repository"]
+
+      - q: "Wie generiert man Audio für alle Lektionen eines Workshops?"
+        a: "Eine Schleife über alle Lektionsordner: for lesson in deutsch/thema/*/; do ./generate-audio.sh $lesson; done"
+        labels: ["Kommando"]
+        rel:
+          - ["Schleife", "Das Skript verarbeitet jeweils eine Lektion pro Aufruf"]
+
+      - q: "Was passiert, wenn die Audio-Dateien schon existieren?"
+        a: "Das Skript überspringt existierende Dateien — es ist idempotent. Mit -f erzwingt man Neugenerierung."
+        labels: ["Idempotent"]
+        rel:
+          - ["-f", "Force-Flag — erzwingt Neugenerierung aller Dateien"]
+
+      - q: "Welche Stimmen werden verwendet?"
+        a: "Die Stimme wird über den BCP 47 code bestimmt: Anna (de-DE), Samantha (en-US), Joana (pt-PT)"
+        labels: ["Referenz"]
+        rel:
+          - ["Anna", "Deutsche macOS TTS-Stimme"]
+          - ["Samantha", "Englische macOS TTS-Stimme"]
+          - ["Joana", "Portugiesische macOS TTS-Stimme"]
