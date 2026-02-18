@@ -10,7 +10,7 @@ sections:
 
       ```
       my-workshop/
-      ├── languages.yaml
+      ├── index.yaml
       ├── english/
       │   ├── topics.yaml
       │   └── my-topic/
@@ -20,12 +20,12 @@ sections:
       ```
     examples:
       - q: "What file must exist in the root of a workshop repository?"
-        a: "languages.yaml — it declares the available interface languages"
+        a: "index.yaml — it declares the available interface languages"
         labels: ["Structure"]
         rel:
-          - ["languages.yaml", "Root file — lists languages with folder and code"]
+          - ["index.yaml", "Root file — lists languages with folder and code"]
 
-      - q: "What does a minimal languages.yaml entry look like?"
+      - q: "What does a minimal index.yaml entry look like?"
         a: "languages:\\n  - folder: english\\n    code: en-US"
         labels: ["Structure"]
         rel:
@@ -77,7 +77,7 @@ sections:
 
       ```
       my-workshop/
-      ├── languages.yaml      # lists english AND deutsch
+      ├── index.yaml          # lists english AND deutsch
       ├── english/
       │   ├── topics.yaml
       │   └── my-topic/
@@ -90,7 +90,7 @@ sections:
       as long as topics.yaml references them correctly.
     examples:
       - q: "How do you offer the same workshop in multiple languages?"
-        a: "Create one language folder per language and list them in languages.yaml"
+        a: "Create one language folder per language and list them in index.yaml"
         labels: ["Multilingual"]
         rel:
           - ["Language folder", "e.g. english/, deutsch/ — contains topics.yaml"]

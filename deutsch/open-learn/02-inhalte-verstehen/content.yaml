@@ -34,9 +34,9 @@ sections:
           - ["Lektion", "Lesson", "Unterste Ebene — einzelne Lerneinheit"]
 
       - q: "Welche Datei listet alle verfügbaren Sprachen?"
-        a: "languages.yaml — liegt im Wurzelverzeichnis"
+        a: "index.yaml — liegt im Wurzelverzeichnis"
         rel:
-          - ["languages.yaml", "Wurzeldatei mit allen Interface-Sprachen"]
+          - ["index.yaml", "Wurzeldatei mit allen Interface-Sprachen"]
 
       - q: "Welche Datei listet die Themen für eine Sprache?"
         a: "topics.yaml — liegt im Sprachordner (z.B. deutsch/topics.yaml)"

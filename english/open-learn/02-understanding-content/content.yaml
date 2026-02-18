@@ -34,9 +34,9 @@ sections:
           - ["Lesson", "Bottom level — a single learning unit"]
 
       - q: "Which file lists all available languages?"
-        a: "languages.yaml — located in the root directory"
+        a: "index.yaml — located in the root directory"
         rel:
-          - ["languages.yaml", "Root file listing all interface languages"]
+          - ["index.yaml", "Root file listing all interface languages"]
 
       - q: "Which file lists the topics for a language?"
         a: "topics.yaml — located in the language folder (e.g. english/topics.yaml)"
